@@ -1,0 +1,10 @@
+<h1>Goals</h1>
+
+
+<ul>
+  <% @goals.each do |goal| %>
+    <% if goal.user_id == current_user.id || goal.status == "public" %>
+      <li><%= goal.description %></li>
+      <% end %>
+  <% end %>
+</ul>

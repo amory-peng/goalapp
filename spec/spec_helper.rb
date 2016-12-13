@@ -47,6 +47,35 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
+
+  def sign_up(username)
+    visit new_user_path
+    fill_in "Username", with: username
+    fill_in "Password", with: 'password'
+    click_button 'Create User'
+  end
+
+  def sign_in(username)
+    visit new_session_path
+    fill_in "Username", with: username
+    fill_in "Password", with: 'password'
+    click_button 'Sign In'
+  end
+
+  def make_goal(desc, pub)
+    visit new_goal_path
+    #save_and_open_page
+    fill_in 'Description', with: desc
+    select('public', from: 'goal[status]') if pub
+    click_button "Create New Goal"
+  end
+
+  def complete_goal(goal_id)
+    visit goal_url(goal_id)
+    choose("Completed")
+    click_button "Goal Completed"
+  end
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

@@ -19,5 +19,8 @@ class ApplicationController < ActionController::Base
     session[:session_token] = nil
   end
 
-  
+  def ensure_user
+    redirect_to new_session_url unless current_user
+  end
+
 end

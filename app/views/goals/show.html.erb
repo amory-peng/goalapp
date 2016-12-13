@@ -1,0 +1,22 @@
+<%= @goal.description %> IS <%= @goal.status %>
+BY <%= @goal.user.username %>
+
+<br>
+
+<% if @goal.completed %>
+  <%= @goal.description + " completed!" %>
+<% else %>
+  <form class="" action="<%= goal_url(@goal)%>" method="post">
+    <input type="hidden" name="_method" value="patch">
+
+    <input type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+
+    <label>
+      <input type="radio" name="goal[completed]" value="true">Completed
+    </label>
+
+    <input type="submit" name="" value="Goal Completed">
+  </form>
+<% end %>
