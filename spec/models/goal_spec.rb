@@ -8,6 +8,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  status      :string
+#  completed   :boolean          default("f")
 #
 
 require 'rails_helper'

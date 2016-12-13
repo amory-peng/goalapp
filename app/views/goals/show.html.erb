@@ -20,3 +20,23 @@ BY <%= @goal.user.username %>
     <input type="submit" name="" value="Goal Completed">
   </form>
 <% end %>
+
+<br>
+Comments
+<ul>
+  <% @goal.goal_comments.each do |goal_comment| %>
+     <li><%= goal_comment.description %> by <%= goal_comment.author.username %></li>
+   <% end %>
+</ul>
+
+Add comments
+<form class="" action="<%= goal_comments_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="hidden" name="goal_comment[goal_id]" value="<%= @goal.id %>">
+
+  <input type="text" name="goal_comment[description]" value="">
+
+  <input type="submit" name="" value="Add Comment">
+</form>
+<%= link_to "Goals", goals_url %>

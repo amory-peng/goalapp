@@ -1,18 +1,18 @@
 # == Schema Information
 #
-# Table name: goals
+# Table name: user_comments
 #
 #  id          :integer          not null, primary key
-#  description :string
+#  author_id   :integer
 #  user_id     :integer
+#  description :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  status      :string
-#  completed   :boolean          default("f")
 #
 
 FactoryGirl.define do
-  factory :goal do
-    
+  factory :user_comment do
+    user_id 1
+    description "MyString"
   end
 end
